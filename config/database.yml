@@ -11,7 +11,7 @@
 development:
   adapter: mysql2
   encoding: utf8
-  database: #simple_cms_development
+  database: simple_cms_development
   pool: 5
   username: ois
   password: stolat
