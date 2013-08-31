@@ -30,18 +30,19 @@ ActiveRecord::Schema.define(version: 20130831185555) do
     t.string   "name"
     t.string   "permalink"
     t.integer  "position"
-    t.boolean  "visible"
+    t.boolean  "visible",    default: false
     t.integer  "subject_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "pages", ["permalink"], name: "index_pages_on_permalink", using: :btree
   add_index "pages", ["subject_id"], name: "index_pages_on_subject_id", using: :btree
 
   create_table "sections", force: true do |t|
     t.string   "name"
     t.integer  "position"
-    t.boolean  "visible"
+    t.boolean  "visible",      default: false
     t.string   "content_type"
     t.text     "content"
     t.integer  "page_id"
@@ -54,7 +55,7 @@ ActiveRecord::Schema.define(version: 20130831185555) do
   create_table "subjects", force: true do |t|
     t.string   "name"
     t.integer  "position"
-    t.boolean  "visible"
+    t.boolean  "visible",    default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
