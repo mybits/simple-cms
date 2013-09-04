@@ -1,0 +1,25 @@
+<div class="pages list">
+	<h2>pages</h2>
+
+	<table class="listing" summary="Pages list">
+		<tr class="header">
+			<th>&nbsp;</th>
+			<th>Name</th>
+			<th>Permalink</th>
+			<th>Visible</th>			
+		</tr>
+		<% @pages.each do |page| %>
+		<tr>
+			<td><%= page.position %></td>
+			<td class="center"><%= page.name %></td>
+			<td class="center"><%= page.permalink %></td>
+			<td class="center"><%= page.visible ? 'Yes' : 'No' %></td>			
+			<td class="actions">
+				<%= link_to('Show', page, class: 'action show') %>
+				<%= link_to('Edit', '#', class: 'action edit') %>
+				<%= link_to('Delete', '#', class: 'action delete') %>
+			</td>
+		</tr>
+		<% end %>
+	</table>
+</div>

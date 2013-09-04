@@ -1,0 +1,25 @@
+<div class="sections list">
+	<h2>sections</h2>
+
+	<table class="listing" summary="sections list">
+		<tr class="header">
+			<th>&nbsp;</th>
+			<th>Name</th>
+			<th>Visible</th>
+			<th>Content</th>			
+		</tr>
+		<% @sections.each do |section| %>
+		<tr>
+			<td><%= section.position %></td>
+			<td class="center"><%= section.name %></td>
+			<td class="center"><%= section.visible ? 'Yes' : 'No' %></td>	
+			<td class="center"><%= section.content %></td>			
+			<td class="actions">
+				<%= link_to('Show', section, class: 'action show') %>
+				<%= link_to('Edit', '#', class: 'action edit') %>
+				<%= link_to('Delete', '#', class: 'action delete') %>
+			</td>
+		</tr>
+		<% end %>
+	</table>
+</div>

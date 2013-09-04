@@ -1,6 +1,10 @@
 SimpleCms::Application.routes.draw do
 
   resources :subjects
+
+  resources :pages
+
+  resources :sections 
   
   # get "subjects/index"
 
