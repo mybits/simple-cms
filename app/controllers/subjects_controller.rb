@@ -30,10 +30,18 @@ class SubjectsController < ApplicationController
 		if @subject.update_columns(params[:subject])
 			redirect_to action: 'show'
 		else
-			render action: 'new'
+			render action: 'edit'
 		end
-
 	end
 
+	def delete
+		@subject = Subject.find(params[:id])
+		# render action: 'delete'
+	end
+
+	def destroy
+		Subject.find(params[:id]).destroy
+		redirect_to action: 'index'
+	end
 
 end

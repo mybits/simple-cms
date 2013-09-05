@@ -19,9 +19,10 @@
 			<td class="actions">
 				<%= link_to('Show', subject, class: 'action show') %>
 				<%= link_to('Edit', {action: :edit, :id => subject.id}, class: 'action edit') %>
-				<%= link_to('Delete', '#', class: 'action delete') %>
+				<%= link_to('Delete', {action: :delete, :id => subject.id}, class: 'action delete') %>
 			</td>
 		</tr>
 		<% end %>
 	</table>
 </div>
+
