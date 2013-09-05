@@ -1,5 +1,6 @@
 SimpleCms::Application.routes.draw do
 
+  root to: 'subjects#index'
   resources :subjects
 
   get 'subjects/:id/delete' => 'subjects#delete'
