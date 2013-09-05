@@ -15,6 +15,7 @@ class SubjectsController < ApplicationController
 	def create
 		@subject = Subject.new      # (params[:subject]) - PROBLEM - nie wchodzą parametry
 		if @subject.save
+			flash[:notice] = "Subject created."
 			redirect_to action: 'index'
 		else
 			render action: 'new'
@@ -28,6 +29,7 @@ class SubjectsController < ApplicationController
 	def update
 		@subject = Subject.find(params[:id])
 		if @subject.update_columns(params[:subject])
+			flash[:notice] = "Subject updated."
 			redirect_to action: 'show'
 		else
 			render action: 'edit'
@@ -36,11 +38,11 @@ class SubjectsController < ApplicationController
 
 	def delete
 		@subject = Subject.find(params[:id])
-		# render action: 'delete'
 	end
 
 	def destroy
 		Subject.find(params[:id]).destroy
+		flash[:notice] = "Subject destroyed."
 		redirect_to action: 'index'
 	end
 
