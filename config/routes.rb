@@ -7,6 +7,8 @@ SimpleCms::Application.routes.draw do
 
   resources :pages
 
+  get 'pages/:id/delete' => 'pages#delete'
+
   resources :sections 
   
   # get "subjects/index"

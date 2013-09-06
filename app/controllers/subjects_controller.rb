@@ -15,7 +15,7 @@ class SubjectsController < ApplicationController
 	end
 
 	def create
-		@subject = Subject.new      # (params[:subject]) - PROBLEM - nie wchodzą parametry
+		@subject = Subject.new(subject_params)
 		if @subject.save
 			flash[:notice] = "Subject created."
 			redirect_to action: 'index'
@@ -46,6 +46,12 @@ class SubjectsController < ApplicationController
 		Subject.find(params[:id]).destroy
 		flash[:notice] = "Subject destroyed."
 		redirect_to action: 'index'
+	end
+
+	private
+
+	def subject_params
+		params.require(:subject).permit(:name, :position, :visible)
 	end
 
 end
