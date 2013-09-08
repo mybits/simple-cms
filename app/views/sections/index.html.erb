@@ -1,7 +1,9 @@
+<%= flash[:notice] %>
+
 <div class="sections list">
 	<h2>sections</h2>
 
-	<%= link_to 'Add new section', {action: :new} %>
+	<%= link_to 'Add new section', {action: :new}, class: 'action new' %>
 
 	<table class="listing" summary="sections list">
 		<tr class="header">
@@ -18,8 +20,8 @@
 			<td class="center"><%= section.content %></td>			
 			<td class="actions">
 				<%= link_to('Show', section, class: 'action show') %>
-				<%= link_to('Edit', '#', class: 'action edit') %>
-				<%= link_to('Delete', '#', class: 'action delete') %>
+				<%= link_to('Edit', {action: :edit, :id => section.id}, class: 'action edit') %>
+				<%= link_to('Delete', {action: :delete, :id => section.id}, class: 'action delete') %>
 			</td>
 		</tr>
 		<% end %>

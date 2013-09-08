@@ -11,6 +11,8 @@ SimpleCms::Application.routes.draw do
 
   resources :sections 
   
+  get 'sections/:id/delete' => 'sections#delete'
+
   # get "subjects/index"
 
   # The priority is based upon order of creation: first created -> highest priority.

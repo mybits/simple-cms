@@ -1,7 +1,8 @@
 <%= link_to '<< Back to section list', {action: :index}, class: 'back-link' %>
 
-<div class="section new">
-	<%= form_for(:section, url: {action: :create}) do |f| %>
+<div class="section update">
+
+	<%= form_for(@section, {action: :update}) do |f| %>
 
 		<table summary="Section form field">
 			<tr>
@@ -23,7 +24,9 @@
 		</table>
 
 		<div class="form-buttons">
-			<%= f.submit 'Create section' %>
+			<%= f.submit 'Update section' %>
 		</div>
+
 	<% end %>
+
 </div>
