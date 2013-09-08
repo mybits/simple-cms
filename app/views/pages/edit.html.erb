@@ -5,7 +5,7 @@
 <div class="page update">
 	<h2>Update Page</h2>
 
-	<%= form_for(@page, url: {action: :update}) do |f| %>
+	<%= form_for(@page, action: :update) do |f| %>
 
 		<%= render(partial: 'form', locals: {:f => f}) %>
 
