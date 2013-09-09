@@ -12,6 +12,8 @@ class SectionsController < ApplicationController
 
 	def new
 		@section = Section.new
+		@section_count = Section.count + 1
+		# @page_id_count = Page.find_by_id(params[:id])
 	end
 
 	def create
@@ -20,12 +22,15 @@ class SectionsController < ApplicationController
 			flash[:notice] = 'Section created.'
 			redirect_to action: 'index'
 		else
+			@section_count = Section.count + 1
+			# @page_id_count = Page.find_by_id(params[:id])
 			render action 'new'
 		end
 	end
 
 	def edit
 		@section = Section.find(params[:id])
+		@section_count = Section.count
 	end
 
 	def update
@@ -34,6 +39,7 @@ class SectionsController < ApplicationController
 			flash[:notice] = 'Section updated.'
 			redirect_to action: 'show'
 		else
+			@section_count = Section.count
 			render action: 'edit'
 		end
 	end
