@@ -17,7 +17,7 @@
 			<td><%= page.position %></td>
 			<td class="center"><%= page.name %></td>
 			<td class="center"><%= page.permalink %></td>
-			<td class="center"><%= page.visible ? 'Yes' : 'No' %></td>			
+			<td class="center"><%= status_tag(page.visible) %></td>			
 			<td class="actions">
 				<%= link_to 'Show', page, class: 'action show' %>
 				<%= link_to 'Edit', {action: :edit, :id => page.id}, class: 'action edit' %>
