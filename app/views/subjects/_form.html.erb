@@ -1,3 +1,5 @@
+<%= render 'shared/error_messages', object: @subject %>
+
 <table summary="Subject form field">
 	<tr>
 		<th>Name</th>
@@ -10,6 +12,10 @@
 	<tr>
 		<th>Visible?</th>
 		<td><%= f.check_box :visible %></td>
+	</tr>
+	<tr>
+		<th>Created</th>
+		<td><%= f.datetime_select(:created_at, order: [:day, :month, :year]) %></td>
 	</tr>
 </table>
 
