@@ -13,6 +13,8 @@ SimpleCms::Application.routes.draw do
   
   get 'sections/:id/delete' => 'sections#delete'
 
+  get 'sandbox/escape_output'
+
   # get "subjects/index"
 
   # The priority is based upon order of creation: first created -> highest priority.
