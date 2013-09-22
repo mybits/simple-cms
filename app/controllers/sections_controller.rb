@@ -24,7 +24,7 @@ class SectionsController < ApplicationController
 		else
 			@section_count = Section.count + 1
 			# @page_id_count = Page.find_by_id(params[:id])
-			render action 'new'
+			render 'new'
 		end
 	end
 

@@ -5,17 +5,14 @@ class AdminUser < ActiveRecord::Base
 
 	EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i
 
-	validates_presence_of :first_name
-	validates_length_of :first_name, maximum: 25
-	validates_presence_of :last_name
-	validates_length_of :last_name, maximum: 50
-	validates_presence_of :username
-	validates_length_of :username, within: 5..25
-	validates_uniqueness_of :username
-	validates_presence_of :emails
-	validates_length_of :email, maximum: 100
-	validates_format_of :email, with: EMAIL_REGEX
-	validates_confirmation_of :email
+	validates :first_name, presence: true, length: { maximum: 25 }
+	validates :last_name, presence: true, lemght: { maximum: 50 }
+	validates :username, presence: true, length: { within: 5..25 }, uniqueness: true
+	validates :email, presence: true,
+										length: { maximum: 100 },
+										uniqueness: true,
+										format: { with: EMAIL_REGEX },
+										confirmation: true
 
 	# scope :named, lambda {|first, last| where(first_name: first, last_name: last)}
 end
