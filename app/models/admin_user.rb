@@ -5,6 +5,8 @@ class AdminUser < ActiveRecord::Base
 	has_many :section_edits
 	has_many :sections, through: :section_edits
 
+	attr_accessor :password
+
 	EMAIL_REGEX = /\A[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\z/i
 
 	validates :first_name, presence: true, length: { maximum: 25 }
@@ -16,6 +18,11 @@ class AdminUser < ActiveRecord::Base
 										format: { with: EMAIL_REGEX },
 										confirmation: true
 
+	validates_length_of :password, within: 8..25, on: :create
+
+	before_save :create_hashed_password
+	after_save :clear_password
+
 	# scope :named, lambda {|first, last| where(first_name: first, last_name: last)}
 
 
@@ -26,4 +33,17 @@ class AdminUser < ActiveRecord::Base
 	def self.hash_with_salt(password="", salt="")
 		Digest::SHA1.hexdigest("Put #{salt} on the #{password}")
 	end
+
+	private
+
+		def create_hashed_password
+			unless password.blank?   
+				self.salt = AdminUser.make_salt(username) if salt.blank?
+				self.hashed_password = AdminUser.hash_with_salt(password, salt)
+			end	
+		end
+
+		def clear_password
+			self.password = nil
+		end
 end
