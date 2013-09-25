@@ -26,6 +26,20 @@ class AdminUser < ActiveRecord::Base
 	# scope :named, lambda {|first, last| where(first_name: first, last_name: last)}
 
 
+	def self.authenticate(username="", password="")
+		user = AdminUser.find_by_username(username)
+		if user && user.password_match?(password)
+			return user
+		else
+			return false
+		end
+	end
+
+	def password_match?(password="")
+		hashed_password == AdminUser.hash_with_salt(password, salt)
+	end
+
+
 	def self.make_salt(username="")
 		Digest::SHA1.hexdigest("Use #{username} with #{Time.now} to make salt")
 	end
