@@ -1,5 +1,7 @@
 SimpleCms::Application.routes.draw do
 
+  get "access/menu"
+  get "access/login"
   root to: 'subjects#index'
   resources :subjects
 
