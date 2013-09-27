@@ -7,6 +7,8 @@ SimpleCms::Application.routes.draw do
   resources :sections 
 
   get 'admin', to: 'access#menu'
+
+  post 'access/attempt_login'
   
     # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
