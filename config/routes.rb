@@ -2,15 +2,13 @@ SimpleCms::Application.routes.draw do
 
   root to: 'subjects#index'
 
-  resources :subjects
-  resources :pages
-  resources :sections 
+  resources :subjects, :pages, :sections 
 
   get 'admin', to: 'access#menu'
 
-  post 'access/attempt_login'
+
   
-    # The priority is based upon order of creation: first created -> highest priority.
+  # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
@@ -65,5 +63,5 @@ SimpleCms::Application.routes.draw do
   #     resources :products
   #   end
 
-  get ':controller(/:action(/:id(.:format)))'
+  match ':controller(/:action(/:id(.:format)))', via: [:get, :post]
 end
