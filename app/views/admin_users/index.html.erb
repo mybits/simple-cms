@@ -3,7 +3,7 @@
 <div class="user list">
 	<h2>Admin Users</h2>
 
-	<%= link_to 'Add New Admin User', action: :new, class: 'action new' %>
+	<%= link_to 'Add New Admin User', {action: :new}, class: 'action new' %>
 
 	<div><%= pluralize(@admin_users.size, 'admin user') %> found</div>
 
@@ -16,7 +16,7 @@
 		</tr>
 
 		<% @admin_users.each do |admin_user| %>
-			<tr>
+			<tr class="<%= cycle('odd', 'even') %>">
 				<td class="center"><%= admin_user.username %></td>
 				<td class="center"><%= admin_user.name %></td>
 				<td class ="center"><%= mail_to(admin_user.email) %></td>

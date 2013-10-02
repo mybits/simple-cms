@@ -18,7 +18,7 @@ class AdminUser < ActiveRecord::Base
 										format: { with: EMAIL_REGEX },
 										confirmation: true
 
-	validates_length_of :password, within: 8..25, on: :create
+	# validates_length_of :password, within: 6..25, on: :create
 
 	before_save :create_hashed_password
 	after_save :clear_password

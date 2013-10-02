@@ -5,7 +5,7 @@ class AdminUsersController < ApplicationController
 	before_filter :confirm_logged_in
 
 	def index
-		@admin_users = AdminUser.sorted
+		@admin_users = AdminUser.all
 	end
 
 	def new
