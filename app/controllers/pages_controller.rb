@@ -6,7 +6,7 @@ class PagesController < ApplicationController
 	before_filter :find_subject
 	
 	def index
-		@pages = Page.all.where(:subject_id => @subject.id)
+		@pages = Page.order('position ASC').where(:subject_id => @subject.id)
 	end
 
 	def show
